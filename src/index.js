@@ -7,7 +7,7 @@ const App = () => (
   <React.Fragment>
     <PrimaryButton>Primary button</PrimaryButton>
     <SecondaryButton>Secondary Button</SecondaryButton>
-    <TertiaryButton>Tertiary Button</TertiaryButton>
+    <TertiaryButton disabled>Hey world</TertiaryButton>
     <GlobalStyle />
   </React.Fragment>
 );

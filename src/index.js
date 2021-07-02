@@ -5,9 +5,15 @@ import { GlobalStyle } from './utils';
 
 const App = () => (
   <React.Fragment>
-    <PrimaryButton>Primary button</PrimaryButton>
-    <SecondaryButton>Secondary Button</SecondaryButton>
-    <TertiaryButton disabled>Hey world</TertiaryButton>
+    <PrimaryButton modifiers={["small", "success", "primaryButtonSuccess"]}>
+      Hello world
+    </PrimaryButton>
+    <SecondaryButton modifiers={["large", "warning", "secondaryButtonWarning"]}>
+      Goodbye world
+    </SecondaryButton>
+    <TertiaryButton modifiers={["error", "tertiaryButtonError"]}>
+      Hey world
+    </TertiaryButton>
     <GlobalStyle />
   </React.Fragment>
 );

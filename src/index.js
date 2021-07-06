@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { ThemeProvider } from "styled-components";
 import ReactDOM from 'react-dom';
-import { PrimaryButton, SecondaryButton, TertiaryButton } from './components/Buttons';
 import { GlobalStyle, darkTheme, defaultTheme } from './utils';
+import { SignUpModal } from "./components";
+
 
 const App = () => {
   const [useDarkTheme, setUseDarkTheme] = useState(false);
@@ -40,17 +41,10 @@ const App = () => {
           justifyContent: "space-around"
         }}
       >
-      <PrimaryButton modifiers={["small", "success", "primaryButtonSuccess"]}>
-        Hello world
-      </PrimaryButton>
-      <SecondaryButton modifiers={["large", "warning", "secondaryButtonWarning"]}>
-        Goodbye world
-      </SecondaryButton>
-      <TertiaryButton modifiers={["error", "tertiaryButtonError"]}>
-        Hey world
-      </TertiaryButton>
+        <SignUpModal />
+        <GlobalStyle />
       </div>
-      <GlobalStyle />
+
     </ThemeProvider>
   );
 };

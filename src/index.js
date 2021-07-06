@@ -1,21 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react'
+import { ThemeProvider } from "styled-components";
 import ReactDOM from 'react-dom';
 import { PrimaryButton, SecondaryButton, TertiaryButton } from './components/Buttons';
-import { GlobalStyle } from './utils';
+import { GlobalStyle, darkTheme, defaultTheme } from './utils';
 
-const App = () => (
-  <React.Fragment>
-    <PrimaryButton modifiers={["small", "success", "primaryButtonSuccess"]}>
-      Hello world
-    </PrimaryButton>
-    <SecondaryButton modifiers={["large", "warning", "secondaryButtonWarning"]}>
-      Goodbye world
-    </SecondaryButton>
-    <TertiaryButton modifiers={["error", "tertiaryButtonError"]}>
-      Hey world
-    </TertiaryButton>
-    <GlobalStyle />
-  </React.Fragment>
-);
+const App = () => {
+  const [useDarkTheme, setUseDarkTheme] = useState(false);
+  return (
+    <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme} >
+      <button
+        style={{
+          margin: "0 16px 24px",
+          padding: "8px",
+          background: "none",
+        }}
+        onClick={() => setUseDarkTheme(true)}
+      >
+        Dark theme
+      </button>
+      <button
+        style={{
+          margin: "0 16px 24px",
+          padding: "8px",
+          background: "none",
+        }}
+        onClick={() => setUseDarkTheme(false)}
+      >
+        Default theme
+      </button>
+      <div
+        style={{
+          background: useDarkTheme
+            ? defaultTheme.primaryColor
+            : darkTheme.primaryColor,
+          width: "100vw",
+          height: "90vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-around"
+        }}
+      >
+      <PrimaryButton modifiers={["small", "success", "primaryButtonSuccess"]}>
+        Hello world
+      </PrimaryButton>
+      <SecondaryButton modifiers={["large", "warning", "secondaryButtonWarning"]}>
+        Goodbye world
+      </SecondaryButton>
+      <TertiaryButton modifiers={["error", "tertiaryButtonError"]}>
+        Hey world
+      </TertiaryButton>
+      </div>
+      <GlobalStyle />
+    </ThemeProvider>
+  );
+};
 
 ReactDOM.render(<App />, document.querySelector('#root'));
